@@ -10,62 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_607_144_540) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_07_172153) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'car_details', force: :cascade do |t|
-    t.string 'name'
-    t.decimal 'price'
-    t.integer 'ratings'
-    t.string 'description'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "cars", force: :cascade do |t|
+    t.string "name"
+    t.decimal "price"
+    t.integer "ratings"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image"
+    t.text "description"
+    t.index ["user_id"], name: "index_cars_on_user_id"
   end
 
-  create_table 'cars', force: :cascade do |t|
-    t.string 'name'
-    t.decimal 'price'
-    t.integer 'ratings'
-    t.bigint 'user_id', null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.string 'image'
-    t.index ['user_id'], name: 'index_cars_on_user_id'
+  create_table "favourites", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "car_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["car_id"], name: "index_favourites_on_car_id"
+    t.index ["user_id"], name: "index_favourites_on_user_id"
   end
 
-  create_table 'favourites', force: :cascade do |t|
-    t.string 'name'
-    t.decimal 'price'
-    t.integer 'ratings'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "users", force: :cascade do |t|
+    t.string "fullname"
+    t.string "icon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table 'user_favourites', force: :cascade do |t|
-    t.bigint 'user_id', null: false
-    t.bigint 'favourite_id', null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['favourite_id'], name: 'index_user_favourites_on_favourite_id'
-    t.index ['user_id'], name: 'index_user_favourites_on_user_id'
-  end
-
-  create_table 'users', force: :cascade do |t|
-    t.string 'fullname'
-    t.string 'icon'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.string 'email', default: '', null: false
-    t.string 'encrypted_password', default: '', null: false
-    t.string 'reset_password_token'
-    t.datetime 'reset_password_sent_at'
-    t.datetime 'remember_created_at'
-    t.index ['email'], name: 'index_users_on_email', unique: true
-    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
-  end
-
-  add_foreign_key 'cars', 'users'
-  add_foreign_key 'user_favourites', 'favourites'
-  add_foreign_key 'user_favourites', 'users'
+  add_foreign_key "cars", "users"
+  add_foreign_key "favourites", "cars"
+  add_foreign_key "favourites", "users"
 end
