@@ -16,11 +16,15 @@ class CarsController < ApplicationController
   end
 
   def create
-    @car = Car.create(car_params)
-    if @car.save
-      render json: @car
+    @car = Car.new(car_params)
+    if @car.price >= 0
+      if @car.save
+        render json: @car
+      else
+        render json: { errors: @car.errors.full_messages }, status: 422
+      end
     else
-      render json: { errors: @car.errors.full_messages }, status: 422
+      render json: { errors: ["Price cannot be negative"] }, status: 422
     end
   end
 
