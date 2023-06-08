@@ -1,8 +1,9 @@
 class FavouritesController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
   def index
-    @favourites = current_user.favourites.includes(:car)
+    @user = User.find(params[:user_id])
+    @favourites = @user.favourites.includes(:car)
     render json: @favourites
   end
 
@@ -11,7 +12,8 @@ class FavouritesController < ApplicationController
   end
 
   def create
-    @favourite = current_user.favourites.create(favourite_params)
+    @user = User.find(params[:user_id])
+    @favourite = @user.favourites.create(favourite_params)
     if @favourite.save
       render json: @favourite
     else
