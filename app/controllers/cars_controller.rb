@@ -23,9 +23,6 @@ class CarsController < ApplicationController
       else
         render json: { errors: @car.errors.full_messages }, status: 422
       end
-    else
-      render json: { errors: ['Price cannot be negative'] }, status: 422
-    end
   end
 
   def destroy
