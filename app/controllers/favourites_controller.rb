@@ -13,7 +13,7 @@ class FavouritesController < ApplicationController
     @user = User.find(params[:user_id])
     @favourite = @user.favourites.new(favourite_params)
     if @favourite.save
-      render json: @favourite
+      render json: @favourite, status: 200
     else
       render json: { errors: @favourite.errors.full_messages }, status: 422
     end
@@ -22,6 +22,7 @@ class FavouritesController < ApplicationController
   def destroy
     @favourite = Favourite.find(params[:id])
     @favourite.destroy
+    render json: { message: 'Favourite removed' }, status: 200
   end
 
   private
