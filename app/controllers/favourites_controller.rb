@@ -1,6 +1,4 @@
 class FavouritesController < ApplicationController
-  # before_action :authenticate_user!
-
   def index
     @user = User.find(params[:user_id])
     @favourites = @user.favourites.includes(:car)
