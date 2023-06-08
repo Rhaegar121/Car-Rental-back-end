@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  post '/users/login', to: 'users#login'
+  post '/users/signup', to: 'users#signup'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
-  resources :users, only: %i[index show]
-  resources :favourites, only: %i[index create destroy]
-  resources :cars, only: %i[index show new create destroy]
+  resources :users, only: [] do
+    resources :cars, only: %i[index show new create destroy]
+    resources :favourites, only: %i[index create destroy]
+  end
 end

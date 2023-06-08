@@ -11,7 +11,7 @@ class FavouritesController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    @favourite = @user.favourites.create(favourite_params)
+    @favourite = @user.favourites.new(favourite_params)
     if @favourite.save
       render json: @favourite
     else

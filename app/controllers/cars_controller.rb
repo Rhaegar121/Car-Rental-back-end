@@ -14,15 +14,12 @@ class CarsController < ApplicationController
   end
 
   def create
-    @car = Car.new(car_params)
-    if @car.price >= 0
-      if @car.save
-        render json: @car
-      else
-        render json: { errors: @car.errors.full_messages }, status: 422
-      end
+    @user = User.find(params[:user_id])
+    @car = @user.cars.new(car_params)
+    if @car.save
+      render json: @car
     else
-      render json: { errors: ['Price cannot be negative'] }, status: 422
+      render json: { errors: @car.errors.full_messages }, status: 422
     end
   end
 
@@ -34,6 +31,6 @@ class CarsController < ApplicationController
   private
 
   def car_params
-    params.require(:car).permit(:name, :price, :ratings, :image)
+    params.require(:car).permit(:name, :price, :ratings, :image, :description)
   end
 end
