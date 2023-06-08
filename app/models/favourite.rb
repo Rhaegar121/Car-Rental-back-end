@@ -1,5 +1,4 @@
 class Favourite < ApplicationRecord
-    belongs_to :user
-    belongs_to :car
-  end
-  
+  belongs_to :user
+  belongs_to :car
+end
