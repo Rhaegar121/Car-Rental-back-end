@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { sessions: 'users/sessions' }
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
-  resources :users do
+  post '/users/login', to: 'users#login'
+  post '/users/signup', to: 'users#signup'
+
+  resources :users, only: [] do
+    resources :cars, only: %i[index show new create destroy]
     resources :favourites, only: %i[index create destroy]
   end
-  resources :cars, only: %i[index show new create destroy]
 end

@@ -17,7 +17,7 @@ Metrics/ClassLength:
   Max: 170
 Metrics/BlockLength:
   Exclude: ['describe']
-  Max: 60
+  Max: 80
 Metrics/CyclomaticComplexity:
   Enabled: false
 Metrics/PerceivedComplexity:
