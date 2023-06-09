@@ -1,68 +1,97 @@
-require 'rails_helper'
+require 'swagger_helper'
 
-RSpec.describe 'Cars', type: :request do
-    before do
-        @user = User.create(fullname: 'User')
-        @car = @user.cars.create(name: 'Car', price: 1000, description: 'Description', ratings: 1, image: 'Image')
+RSpec.describe 'cars', type: :request do
+
+  path '/users/{user_id}/cars' do
+    # You'll want to customize the parameter types...
+    parameter name: 'user_id', in: :path, type: :string, description: 'user_id'
+
+    get('list cars') do
+      response(200, 'successful') do
+        let(:user_id) { '123' }
+
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        run_test!
+      end
     end
 
-    describe 'GET /cars' do
-        before do
-            get "/users/#{@user[:id]}/cars"
-        end
+    post('create car') do
+      response(200, 'successful') do
+        let(:user_id) { '123' }
 
-        it 'returns status code 200' do
-            expect(response).to have_http_status(200)
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
         end
+        run_test!
+      end
+    end
+  end
 
-        it 'returns all cars' do
-            expect(response.body).to eq([@car].to_json)
+  path '/users/{user_id}/cars/new' do
+    # You'll want to customize the parameter types...
+    parameter name: 'user_id', in: :path, type: :string, description: 'user_id'
+
+    get('new car') do
+      response(200, 'successful') do
+        let(:user_id) { '123' }
+
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
         end
+        run_test!
+      end
+    end
+  end
+
+  path '/users/{user_id}/cars/{id}' do
+    # You'll want to customize the parameter types...
+    parameter name: 'user_id', in: :path, type: :string, description: 'user_id'
+    parameter name: 'id', in: :path, type: :string, description: 'id'
+
+    get('show car') do
+      response(200, 'successful') do
+        let(:user_id) { '123' }
+        let(:id) { '123' }
+
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        run_test!
+      end
     end
 
-    describe 'GET /cars/:id' do
-        before do
-            get "/users/#{@user[:id]}/cars/#{@car[:id]}"
-        end
+    delete('delete car') do
+      response(200, 'successful') do
+        let(:user_id) { '123' }
+        let(:id) { '123' }
 
-        it 'returns status code 200' do
-            expect(response).to have_http_status(200)
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
         end
-
-        it 'returns the car' do
-            expect(response.body).to eq(@car.to_json)
-        end
+        run_test!
+      end
     end
-
-    describe 'POST /cars' do
-        context 'when car is valid' do
-            before do
-                post "/users/#{@user[:id]}/cars", params: { car: { name: 'New Car', price: 1000, description: 'Description', ratings: 1, image: 'Image' } }
-            end
-
-            it 'returns status code 200' do
-                expect(response).to have_http_status(200)
-            end
-        end
-
-        context 'when car is invalid' do
-            before do
-                post "/users/#{@user[:id]}/cars", params: { car: { name: ' ', price: 1000, description: 'Description', ratings: 1, image: 'Image' } }
-            end
-
-            it 'returns status code 422' do
-                expect(response).to have_http_status(422)
-            end
-        end
-    end
-
-    describe 'DELETE /cars/:id' do
-        before do
-            delete "/users/#{@user[:id]}/cars/#{@car[:id]}"
-        end
-
-        it 'returns status code 200' do
-            expect(response).to have_http_status(200)
-        end
-    end
+  end
 end

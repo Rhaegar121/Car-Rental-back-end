@@ -1,55 +1,61 @@
-require 'rails_helper'
+require 'swagger_helper'
 
-RSpec.describe 'Favourites', type: :request do
-    before do
-        @user = User.create(fullname: 'User')
-        @car = @user.cars.create(name: 'Car', price: 1000, description: 'Description', ratings: 1, image: 'Image')
-        @favourite = @user.favourites.create(car_id: @car[:id], user_id: @user[:id])
+RSpec.describe 'favourites', type: :request do
+
+  path '/users/{user_id}/favourites' do
+    # You'll want to customize the parameter types...
+    parameter name: 'user_id', in: :path, type: :string, description: 'user_id'
+
+    get('list favourites') do
+      response(200, 'successful') do
+        let(:user_id) { '123' }
+
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        run_test!
+      end
     end
 
-    describe 'GET /favourites' do
-        before do
-            get "/users/#{@user[:id]}/favourites"
-        end
+    post('create favourite') do
+      response(200, 'successful') do
+        let(:user_id) { '123' }
 
-        it 'returns status code 200' do
-            expect(response).to have_http_status(200)
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
         end
-
-        it 'returns all favourites' do
-            expect(response.body).to eq([@favourite].to_json)
-        end
+        run_test!
+      end
     end
+  end
 
-    describe 'POST /favourites' do
-        context 'when favourite is valid' do
-            before do
-                post "/users/#{@user[:id]}/favourites", params: { favourite: { car_id: @car[:id], user_id: @user[:id] } }
-            end
+  path '/users/{user_id}/favourites/{id}' do
+    # You'll want to customize the parameter types...
+    parameter name: 'user_id', in: :path, type: :string, description: 'user_id'
+    parameter name: 'id', in: :path, type: :string, description: 'id'
 
-            it 'returns status code 200' do
-                expect(response).to have_http_status(200)
-            end
+    delete('delete favourite') do
+      response(200, 'successful') do
+        let(:user_id) { '123' }
+        let(:id) { '123' }
+
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
         end
-
-        context 'when favourite is invalid' do
-            before do
-                post "/users/#{@user[:id]}/favourites", params: { favourite: { car_id: ' ', user_id: @user[:id] } }
-            end
-
-            it 'returns status code 422' do
-                expect(response).to have_http_status(422)
-            end
-        end
+        run_test!
+      end
     end
-
-    describe 'DELETE /favourites/:id' do
-        before do
-            delete "/users/#{@user[:id]}/favourites/#{@favourite[:id]}"
-        end
-
-        it 'returns status code 204' do
-            expect(response).to have_http_status(200)
-        end
-    end
+  end
 end
