@@ -1,7 +1,6 @@
 require 'swagger_helper'
 
 RSpec.describe 'cars', type: :request do
-
   path '/users/{user_id}/cars' do
     # You'll want to customize the parameter types...
     parameter name: 'user_id', in: :path, type: :string, description: 'user_id'

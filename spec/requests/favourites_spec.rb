@@ -1,7 +1,6 @@
 require 'swagger_helper'
 
 RSpec.describe 'favourites', type: :request do
-
   path '/users/{user_id}/favourites' do
     # You'll want to customize the parameter types...
     parameter name: 'user_id', in: :path, type: :string, description: 'user_id'
