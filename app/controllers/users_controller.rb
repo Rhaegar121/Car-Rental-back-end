@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def login
-    @user = User.find_by(fullname: params[:fullname])
+    @user = User.find_by(fullname: params[:user][:fullname])
     if @user
       render json: @user, status: 200
     else

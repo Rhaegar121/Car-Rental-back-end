@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   mount Rswag::Api::Engine => '/api-docs'
 
   post '/users/login', to: 'users#login'
+  match '/users/login', to: 'users#login', via: [:options]
   post '/users/signup', to: 'users#signup'
+  match '/users/signup', to: 'users#signup', via: [:options]
 
   resources :users, only: [] do
     resources :cars, only: %i[index show new create destroy]

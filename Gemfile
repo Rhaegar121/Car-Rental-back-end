@@ -77,3 +77,5 @@ end
 
 gem 'rswag'
 gem 'rubocop', '>= 1.0', '< 2.0'
+gem 'cors'
+gem 'rack-cors', require: 'rack/cors'
