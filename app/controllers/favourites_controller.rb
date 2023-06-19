@@ -2,7 +2,8 @@ class FavouritesController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @favourites = @user.favourites.includes(:car)
-    render json: @favourites
+    @cars = @favourites.map(&:car)
+    render json: { cars: @cars, favourites: @favourites }
   end
 
   def new
