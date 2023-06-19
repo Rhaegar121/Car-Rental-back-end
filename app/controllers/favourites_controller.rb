@@ -13,8 +13,9 @@ class FavouritesController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @favourite = @user.favourites.new(favourite_params)
+    @car = Car.find(params[:favourite][:car_id])
     if @favourite.save
-      render json: @favourite, status: 200
+      render json: { cars: @car, favourites: @favourite }, status: 200
     else
       render json: { errors: @favourite.errors.full_messages }, status: 422
     end
