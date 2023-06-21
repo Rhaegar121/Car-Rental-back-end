@@ -14,9 +14,8 @@ class CarsController < ApplicationController
   end
 
   def create
-    # @user = User.find(params[:user_id])
-    # @car = @user.cars.new(car_params)
-    @car = Car.new(car_params)
+    @user = User.find(params[:user_id])
+    @car = @user.cars.new(car_params)
     if @car.save
       render json: @car, status: 200
     else

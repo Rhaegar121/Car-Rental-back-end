@@ -1,24 +1,153 @@
-# README
+<a name="readme-top"></a>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 📗 Table of Contents
 
-Things you may want to cover:
+- [📖 About the Project](#about-project)
+  - [🛠 Built With](#built-with)
+    - [Tech Stack](#tech-stack)
+    - [Key Features](#key-features)
+- [💻 Getting Started](#getting-started)
+  - [Setup](#setup)
+  - [Prerequisites](#prerequisites)
+  - [Install](#install)
+  - [Usage](#usage)
+  - [Run tests](#run-tests)
+- [👥 Authors](#authors)
+- [🔭 Future Features](#future-features)
+- [🤝 Contributing](#contributing)
+- [⭐️ Show your support](#support)
+- [🙏 Acknowledgements](#acknowledgements)
+- [📝 License](#license)
 
-* Ruby version
+# 📖 CarRental App <a name="about-project"></a>
 
-* System dependencies
+> This is the Final Capstone Project used for back-end API endpoint. 
 
-* Configuration
+## 🛠 Built With <a name="built-with"></a>
 
-* Database creation
+Rails
 
-* Database initialization
+### Tech Stack <a name="tech-stack"></a>
 
-* How to run the test suite
+<details>
+  <summary>Client</summary>
+</details>
 
-* Services (job queues, cache servers, search engines, etc.)
+<details>
+  <summary>Server</summary>
+</details>
 
-* Deployment instructions
+<details>
+<summary>Database</summary>
+</details>
 
-* ...
+### Key Features <a name="key-features"></a>
+
+- **Custom Authentication**
+- **API Documentation**
+
+## 💻 Getting Started <a name="getting-started"></a>
+
+To get a local copy up and running, follow these steps.
+
+### Prerequisites
+
+In order to run this project you need:
+
+- Command line or terminal with Rails installed.
+- IDE such as VsCode.
+
+### Setup
+
+Clone this repository to your desired folder:
+
+```sh
+  cd my-folder
+  https://github.com/Rhaegar121/Capstone-Back-End.git
+```
+
+### Install
+
+Install this project with:
+
+Example command:
+
+```sh
+  cd my-project
+  gem install rails
+  gem install ruby
+  gem install bundler
+  bundle install
+```
+```
+  rails db:create, 
+  rails db:migrate, 
+  rails db:seed
+```
+
+### Usage
+
+To run the project, execute the following command:
+
+```sh
+  rails server
+```
+
+### Test
+
+To check the tests, execute the following command:
+
+```sh
+  rspec ./spec/models
+  rspec ./spec/controllers
+```
+
+## 👥 Author <a name="authors"></a>
+
+👤 **Rachel Issac**
+
+- GitHub: [Rachelwebdev](https://github.com/Rachelwebdev)
+- Twitter: [@rachelisaac13](https://twitter.com/Rachelisaac13)
+- LinkedIn: [Rachel Isaac](https://www.linkedin.com/in/rachelisaac13/)
+
+👤 **Kaung Myat Kyaw**
+
+- GitHub: [@githubhandle](https://github.com/Rhaegar121)
+- Twitter [@20Rhaegar](https://twitter.com/20Rhaegar)
+- LinkedIn: [Kaung Myat Kyaw](https://www.linkedin.com/in/kaung-myat-kyaw-391720227/)
+
+👤 **Jerome Jay Osman**
+
+- GitHub: [@Jay Jerome G.O.](https://github.com/187jjay187)
+- LinkedIn: [Jerome Osman](https://www.linkedin.com/in/)
+
+👤 **Innocent N.**
+
+GitHub: [@chaseknis](https://github.com/Chaseknis/)
+Twitter: [@ChaseToTheWorld](https://twitter.com/chasetotheworld)
+LinkedIn: [Innocent N.](https://www.linkedin.com/in/innocent-n-200826252/)
+
+## 🔭 Future Features <a name="future-features"></a>
+
+- [ ] **Refactor the code**
+- [ ] **Check edge cases**
+
+## 🤝 Contributing <a name="contributing"></a>
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](../../issues/).
+
+## ⭐️ Show your support <a name="support"></a>
+
+If you like this project...give it a ⭐️!
+
+## 🙏 Acknowledgments <a name="acknowledgements"></a>
+
+This replica was originally designed by <a href="https://www.behance.net/alexey_savitskiy">Alexey Savitskiy in Behance</a>. Checkout Gregoire Vella's design <a href="https://www.behance.net/gallery/37706679/Circle-(Landing-page-Dashboard-Mobile-App)">here</a>
+
+## 📝 License <a name="license"></a>
+
+This project is [MIT](./MIT.md) licensed.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
