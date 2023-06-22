@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Cars', type: :request do
   before do
-    @user = User.create(fullname: 'User')
+    @user = User.create(fullname: 'User', email: 'user@gmail.com', password: 'password')
     @car = @user.cars.create(name: 'Car', price: 1000, description: 'Description', ratings: 1, image: 'Image')
   end
 
