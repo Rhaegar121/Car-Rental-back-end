@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Car, type: :model do
   describe 'Car Model' do
     before do
-      @user = User.create(fullname: 'User')
+      @user = User.create(fullname: 'User', email: 'user@gmail.com', password: 'password')
       @car = @user.cars.create(name: 'Car', description: 'This is a car', price: 100, ratings: 4, image: 'imgurl')
     end
 
