@@ -21,7 +21,9 @@
 
 # 📖 CarRental App <a name="about-project"></a>
 
-> This is the Final Capstone Project used for back-end API endpoint. 
+> The **Car Rental App** is a full-stack app we built using React as Front-end and Ruby on Rails as the Back-end API with custom authentication. The users can see a list of cars to rent and add to their favorites. The users can also add a car to the list and delete a car from the list.
+
+- You can see the Front-end repo <a href="https://github.com/Rhaegar121/Car-Rental-front-end">here</a>.
 
 ## 🛠 Built With <a name="built-with"></a>
 
