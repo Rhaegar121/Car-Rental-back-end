@@ -113,8 +113,8 @@ To check the tests, execute the following command:
 👤 **Kaung Myat Kyaw**
 
 - GitHub: [@githubhandle](https://github.com/Rhaegar121)
-- Twitter [@20Rhaegar](https://twitter.com/20Rhaegar)
-- LinkedIn: [Kaung Myat Kyaw](https://www.linkedin.com/in/kaung-myat-kyaw-391720227/)
+- Twitter [@20Rhaegar](https://twitter.com/Rhaegar121)
+- LinkedIn: [Kaung Myat Kyaw](https://www.linkedin.com/in/kaungmyatkyaw/)
 
 👤 **Jerome Jay Osman**
 
@@ -123,9 +123,9 @@ To check the tests, execute the following command:
 
 👤 **Innocent N.**
 
-GitHub: [@chaseknis](https://github.com/Chaseknis/)
-Twitter: [@ChaseToTheWorld](https://twitter.com/chasetotheworld)
-LinkedIn: [Innocent N.](https://www.linkedin.com/in/innocent-n-200826252/)
+- GitHub: [@chaseknis](https://github.com/Chaseknis/)
+- Twitter: [@ChaseToTheWorld](https://twitter.com/chasetotheworld)
+- LinkedIn: [Innocent N.](https://www.linkedin.com/in/innocent-n-200826252/)
 
 ## 🔭 Future Features <a name="future-features"></a>
 
