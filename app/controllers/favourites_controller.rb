@@ -1,9 +1,9 @@
 class FavouritesController < ApplicationController
-  before_action :authenticate_user!
-
   def index
-    @favourites = current_user.favourites.includes(:car)
-    render json: @favourites
+    @user = User.find(params[:user_id])
+    @favourites = @user.favourites.includes(:car)
+    @cars = @favourites.map(&:car)
+    render json: { cars: @cars, favourites: @favourites }
   end
 
   def new
@@ -11,9 +11,11 @@ class FavouritesController < ApplicationController
   end
 
   def create
-    @favourite = current_user.favourites.create(favourite_params)
+    @user = User.find(params[:user_id])
+    @favourite = @user.favourites.new(favourite_params)
+    @car = Car.find(params[:favourite][:car_id])
     if @favourite.save
-      render json: @favourite
+      render json: { cars: @car, favourites: @favourite }, status: 200
     else
       render json: { errors: @favourite.errors.full_messages }, status: 422
     end
@@ -22,6 +24,7 @@ class FavouritesController < ApplicationController
   def destroy
     @favourite = Favourite.find(params[:id])
     @favourite.destroy
+    render json: { message: 'Favourite removed' }, status: 200
   end
 
   private

@@ -1,7 +1,8 @@
 class User < ApplicationRecord
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-
+  has_secure_password
   has_many :cars
   has_many :favourites
+
+  validates :fullname, presence: true, length: { maximum: 50 }
+  validates :email, presence: true
 end
