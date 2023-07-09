@@ -73,7 +73,7 @@ Clone this repository to your desired folder:
 
 ```sh
   cd my-folder
-  https://github.com/Rhaegar121/Capstone-Back-End.git
+  https://github.com/Rhaegar121/Car-Rental-back-end
 ```
 
 ### Install
