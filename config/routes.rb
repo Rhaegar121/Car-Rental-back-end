@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   match '/users/signup', to: 'users#signup', via: [:options]
   delete '/users/logout', to: 'users#logout'
 
+  resources :cars, only: %i[index show]
   resources :users, only: [] do
-    resources :cars, only: %i[index show new create destroy]
+    resources :cars, only: %i[new create destroy]
     resources :favourites, only: %i[index create destroy]
   end
 end
