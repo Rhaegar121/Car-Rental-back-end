@@ -25,13 +25,16 @@ class CarsController < ApplicationController
 
   def destroy
     @car = Car.find(params[:id])
-    @car.destroy
-    render json: { message: 'Car deleted' }, status: 200
+    if @car.destroy
+      render json: { message: 'Car deleted' }, status: 200
+    else
+      render json: { errors: @car.errors.full_messages }, status: 422
+    end
   end
 
   private
 
   def car_params
-    params.require(:car).permit(:name, :price, :ratings, :image, :description)
+    params.require(:car).permit(:name, :price, :ratings, :image, :description, :door, :seat, :bag, :min_oil, :max_oil)
   end
 end
