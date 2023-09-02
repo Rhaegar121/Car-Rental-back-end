@@ -12,12 +12,18 @@ class FavouritesController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    @favourite = @user.favourites.new(favourite_params)
     @car = Car.find(params[:favourite][:car_id])
-    if @favourite.save
-      render json: { cars: @car, favourites: @favourite }, status: 200
+  
+    # Check if a favorite with the same car_id exists for this user
+    if @user.favourites.exists?(car_id: @car.id)
+      render json: { errors: 'This car is already in your favorites.' }, status: 422
     else
-      render json: { errors: @favourite.errors.full_messages }, status: 422
+      @favourite = @user.favourites.new(favourite_params)
+      if @favourite.save
+        render json: { cars: @car, favourites: @favourite }, status: 200
+      else
+        render json: { errors: @favourite.errors.full_messages }, status: 422
+      end
     end
   end
 

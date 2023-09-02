@@ -1,6 +1,6 @@
 class Car < ApplicationRecord
   belongs_to :user
-  has_many :favourites
+  has_many :favourites, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :description, presence: true
