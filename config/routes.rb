@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   delete '/users/logout', to: 'users#logout'
 
   resources :cars, only: %i[index show]
-  resources :users, only: [] do
+  resources :users, only: %i[show update] do
     resources :cars, only: %i[new create destroy]
     resources :favourites, only: %i[index create destroy]
   end
