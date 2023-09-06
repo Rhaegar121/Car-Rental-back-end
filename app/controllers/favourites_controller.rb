@@ -16,7 +16,7 @@ class FavouritesController < ApplicationController
   
     # Check if a favorite with the same car_id exists for this user
     if @user.favourites.exists?(car_id: @car.id)
-      render json: { errors: 'This car is already in your favorites.' }, status: 422
+      render json: { errors: 'This car is already in your reservation.' }, status: 422
     else
       @favourite = @user.favourites.new(favourite_params)
       if @favourite.save
