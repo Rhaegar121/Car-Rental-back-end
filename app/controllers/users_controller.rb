@@ -3,9 +3,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   
     if @user.update(user_params)
-      render json: @user, status: :200
+      render json: @user, status: 200
     else
-      render json: { errors: @user.errors.full_messages }, status: :422
+      render json: { errors: @user.errors.full_messages }, status: 422
     end
   end
 
