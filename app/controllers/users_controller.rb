@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
-      render json: @user, status: 200
+      render json: @user.user_with_icon_url, status: 200
     else
       render json: { errors: ['Invalid email or password'] }, status: 422
     end
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   
     if @user.save
       session[:user_id] = @user.id
-      render json: @user, status: 200
+      render json: @user.user_with_icon_url, status: 200
     else
       render json: { errors: @user.errors.full_messages }, status: 422
     end
