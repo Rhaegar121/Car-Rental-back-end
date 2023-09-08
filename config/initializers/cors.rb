@@ -8,7 +8,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     end
 
     allow do
-      origins 'https://car-rental-capstone.netlify.app' # Replace with your frontend URL
+      origins 'https://car-rental121.netlify.app/' # Replace with your frontend URL
       resource '*',
         headers: :any,
         methods: [:get, :post, :put, :patch, :delete, :options, :head],
