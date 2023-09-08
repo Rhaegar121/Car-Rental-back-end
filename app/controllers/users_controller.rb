@@ -10,31 +10,31 @@ class UsersController < ApplicationController
   end
 
   def login
-    @user = User.find_by(email: params[:user][:email]).try(:authenticate, params[:user][:password])
-
-    if @user
+    @user = User.find_by(email: params[:user][:email])
+  
+    if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
       render json: @user, status: 200
     else
-      render json: { errors: ['User not found'] }, status: 422
+      render json: { errors: ['Invalid email or password'] }, status: 422
     end
-  end
+  end  
 
   def signup
-    @user = User.create!(
+    @user = User.new(
       fullname: params[:user][:fullname],
       email: params[:user][:email],
       password: params[:user][:password],
       password_confirmation: params[:user][:password_confirmation]
     )
-
-    if @user
+  
+    if @user.save
       session[:user_id] = @user.id
       render json: @user, status: 200
     else
       render json: { errors: @user.errors.full_messages }, status: 422
     end
-  end
+  end  
 
   def logout
     reset_session
