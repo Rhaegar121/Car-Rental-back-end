@@ -35,20 +35,22 @@
 
 ## 🛠 Built With <a name="built-with"></a>
 
-Rails
-
 ### Tech Stack <a name="tech-stack"></a>
 
 <details>
   <summary>Client</summary>
+  <ul>
+    <li><a href="https://reactjs.org/">React.js</a></li>
+    <li><a href="https://redux.js.org/">Redux</a></li>
+  </ul>
 </details>
 
 <details>
   <summary>Server</summary>
-</details>
-
-<details>
-<summary>Database</summary>
+  <ul>
+    <li><a href="https://rubyonrails.org/">Ruby on Rails</a></li>
+    <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
+  </ul>
 </details>
 
 ### Key Features <a name="key-features"></a>
