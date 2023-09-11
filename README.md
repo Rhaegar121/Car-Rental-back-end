@@ -55,8 +55,12 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **Custom Authentication**
-- **API Documentation**
+- Car Listings
+- Car Details
+- Reservations
+- Car Deletion
+- Car Addition
+- Profile Management
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
