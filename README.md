@@ -146,8 +146,8 @@ To check the tests, execute the following command:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **Refactor the code**
-- [ ] **Check edge cases**
+- **[Image_uploading_with_ActiveStorage]**
+- **[Token_based_authentication]**
 
 ## 🤝 Contributing <a name="contributing"></a>
 
